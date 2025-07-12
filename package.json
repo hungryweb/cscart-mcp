@@ -1,0 +1,35 @@
+{
+  "name": "cscart-mcp-server",
+  "version": "0.1.0",
+  "description": "Model Context Protocol server for CS-Cart e-commerce platform",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "cscart-mcp-server": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "mcp",
+    "cs-cart",
+    "ecommerce",
+    "model-context-protocol",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  cscart-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cscart-mcp-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - CSCART_API_URL=${CSCART_API_URL}
+      - CSCART_API_EMAIL=${CSCART_API_EMAIL}
+      - CSCART_API_KEY=${CSCART_API_KEY}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+    # Uncomment if you need to expose ports for HTTP endpoints
+    # ports:
+    #   - "3000:3000"
+    volumes:
+      # Mount logs directory for persistent logging
+      - ./logs:/app/logs
+    networks:
+      - cscart-network
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  cscart-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
