@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "description": "Model Context Protocol server for CS-Cart e-commerce platform",
   "type": "module",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
-    "cscart-mcp-server": "./index.js"
+    "cscart-mcp-server": "./src/index.js"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "jest"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest",
+    "setup": "node scripts/setup.js",
+    "docker:build": "docker build -t cscart-mcp-server .",
+    "docker:build:prod": "docker build -f Dockerfile.production -t cscart-mcp-server:prod .",
+    "docker:run": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
   },
   "keywords": [
     "mcp",

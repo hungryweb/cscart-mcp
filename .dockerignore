@@ -38,6 +38,12 @@ CHANGELOG.md
 LICENSE
 docs/
 
+# Only include src directory and necessary files
+# Exclude everything, then include what we need
+*
+!src/
+!package*.json
+
 # Development files
 .editorconfig
 .eslintrc*

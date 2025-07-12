@@ -3,6 +3,9 @@
 /**
  * CS-Cart MCP Server
  * Provides tools to manage CS-Cart store products and access order data
+ * 
+ * @file src/index.js
+ * @version 0.1.0
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';

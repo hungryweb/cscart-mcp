@@ -28,7 +28,30 @@ A Model Context Protocol (MCP) server that provides comprehensive tools for mana
 
 ## Installation
 
-### Option 1: Local Installation
+### Option 1: Quick Setup (Recommended)
+
+1. Clone this repository:
+```bash
+git clone <repository-url>
+cd cscart-mcp-server
+```
+
+2. Run the setup script:
+```bash
+npm run setup
+```
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Update `.env` with your CS-Cart credentials and start:
+```bash
+npm start
+```
+
+### Option 2: Manual Local Installation
 
 1. Clone this repository:
 ```bash
@@ -121,15 +144,23 @@ docker run -d \
 
 ### Running the Server
 
-#### Local Development
-Start the MCP server:
+#### Quick Commands
 ```bash
-npm start
-```
+# Setup project
+npm run setup
 
-For development with auto-reload:
-```bash
+# Development
 npm run dev
+
+# Production
+npm start
+
+# Docker commands
+npm run docker:build      # Build standard image
+npm run docker:build:prod # Build production image
+npm run docker:run        # Start with docker-compose
+npm run docker:stop       # Stop docker-compose
+npm run docker:logs       # View logs
 ```
 
 #### Docker Deployment
@@ -170,7 +201,7 @@ Add this server to your MCP client configuration. For example, with Claude Deskt
   "mcpServers": {
     "cscart": {
       "command": "node",
-      "args": ["/path/to/cscart-mcp-server/index.js"],
+      "args": ["/path/to/cscart-mcp-server/src/index.js"],
       "env": {
         "CSCART_API_URL": "https://your-store.com/api",
         "CSCART_API_EMAIL": "admin@yourstore.com",
@@ -318,11 +349,20 @@ Adjust these based on your server capacity and usage requirements.
 ### Project Structure
 ```
 cscart-mcp-server/
-├── index.js          # Main server file
-├── package.json       # Dependencies and scripts
-├── .env.example      # Environment configuration template
-├── README.md         # This file
-└── .gitignore        # Git ignore rules
+├── src/
+│   └── index.js              # Main server file (moved here)
+├── scripts/
+│   └── setup.js              # Setup automation script
+├── logs/                     # Log files directory
+├── tests/                    # Test files directory
+├── config/                   # Configuration files
+├── package.json              # Updated paths
+├── project.config.js         # Project configuration
+├── Dockerfile               # Updated for new structure
+├── Dockerfile.production    # Updated for new structure
+├── docker-compose.yml       # Docker orchestration
+├── .env.example             # Environment template
+└── README.md                # Updated documentation
 ```
 
 ### Adding New Tools

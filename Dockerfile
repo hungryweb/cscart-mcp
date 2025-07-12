@@ -14,8 +14,11 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci --only=production && npm cache clean --force
 
-# Copy the rest of the application code
-COPY . .
+# Copy the source code
+COPY src/ ./src/
+
+# Copy package files
+COPY package*.json ./
 
 # Change ownership of the app directory to the nodejs user
 RUN chown -R nextjs:nodejs /app
