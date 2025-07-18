@@ -78,6 +78,16 @@ Two Docker configurations:
 - `Dockerfile.production` - Multi-stage optimized production build with security hardening
 - Resource limits configured in `docker-compose.yml`
 
+## Integration with AnythingLLM
+
+For AnythingLLM integration, configuration is available in the README.md file at lines 220-268. Key points:
+
+1. **Configuration Location**: AnythingLLM Settings → Integrations → MCP Servers
+2. **Required Paths**: Use absolute paths for both `node` executable and `src/index.js`
+3. **Environment Variables**: Set `CSCART_API_URL`, `CSCART_API_EMAIL`, and `CSCART_API_KEY`
+4. **Docker Considerations**: Mount directories as volumes if AnythingLLM runs in Docker
+5. **Testing**: Restart AnythingLLM after configuration and test CS-Cart tools
+
 ## Important Notes
 
 - All API responses are returned as JSON-formatted text in MCP tool results

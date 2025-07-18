@@ -212,6 +212,60 @@ Add this server to your MCP client configuration. For example, with Claude Deskt
 }
 ```
 
+**Note**: Use the full path to the `node` executable. Common paths:
+- **macOS**: `/usr/local/bin/node` or `/opt/homebrew/bin/node`
+- **Linux**: `/usr/bin/node` or `/usr/local/bin/node`
+- **Windows**: `C:\\Program Files\\nodejs\\node.exe`
+
+### Integration with AnythingLLM
+
+To integrate this MCP server with AnythingLLM:
+
+1. **Navigate to AnythingLLM Settings**:
+   - Open your AnythingLLM instance
+   - Go to **Settings** → **Integrations** → **MCP Servers**
+
+2. **Add the CS-Cart MCP Server**:
+   ```json
+   {
+     "command": "/usr/local/bin/node",
+     "args": ["/full/path/to/cscart-mcp-server/src/index.js"],
+     "env": {
+       "CSCART_API_URL": "https://your-store.com/api",
+       "CSCART_API_EMAIL": "admin@yourstore.com",
+       "CSCART_API_KEY": "your-api-key-here"
+     }
+   }
+   ```
+
+3. **Important Path Notes**:
+   - Use the **full absolute path** to the `node` executable
+   - Use the **full absolute path** to the `src/index.js` file
+   - Ensure the paths are accessible from the AnythingLLM container/environment
+
+4. **Example for macOS**:
+   ```json
+   {
+     "command": "/usr/local/bin/node",
+     "args": ["/Users/username/GitHub/cscart-mcp/src/index.js"],
+     "env": {
+       "CSCART_API_URL": "https://your-store.com/api",
+       "CSCART_API_EMAIL": "admin@yourstore.com",
+       "CSCART_API_KEY": "your-api-key-here"
+     }
+   }
+   ```
+
+5. **Docker Integration** (if AnythingLLM is running in Docker):
+   - Mount the CS-Cart MCP server directory as a volume
+   - Use the container path in the configuration
+   - Ensure proper file permissions
+
+6. **Test the Integration**:
+   - Restart AnythingLLM after adding the MCP server
+   - Check the logs for any connection errors
+   - Try using CS-Cart tools in your conversations
+
 ## Available Tools
 
 ### Product Tools
